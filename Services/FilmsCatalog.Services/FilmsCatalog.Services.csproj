@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\FilmsCatalog.Data.Contract\FilmsCatalog.Data.Contract.csproj" />
+    <ProjectReference Include="..\..\Data\FilmsCatalog.Data\FilmsCatalog.Data.csproj" />
+    <ProjectReference Include="..\FilmsCatalog.Services.Contract\FilmsCatalog.Services.Contract.csproj" />
+  </ItemGroup>
+
+</Project>

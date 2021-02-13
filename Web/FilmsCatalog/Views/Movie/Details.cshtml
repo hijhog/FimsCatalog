@@ -1,0 +1,44 @@
+﻿@model MovieDto
+@using FilmsCatalog.Services.Contract.Models
+
+<h2>Детали фильма</h2>
+
+<div class="row">
+    <div class="col-12 col-md-6">
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.IssueYear)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.IssueYear)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Producer)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Producer)
+            </dd>
+        </dl>
+        <div>
+            <a asp-action="Index">Назад в список</a>
+        </div>
+    </div>
+    <div class="col-12 col-md-6">
+        <figure class="figure">
+            <img src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Poster))" class="figure-img img-fluid rounded" alt="...">
+            <figcaption class="figure-caption">A caption for the above image.</figcaption>
+        </figure>
+    </div>
+</div>

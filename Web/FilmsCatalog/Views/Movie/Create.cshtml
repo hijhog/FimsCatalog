@@ -1,0 +1,50 @@
+﻿@model MovieDto
+@using FilmsCatalog.Services.Contract.Models
+
+<h2>Добавить фильм</h2>
+
+<hr />
+<form asp-controller="Movie" asp-action="Create" method="post" style="margin-top: 2em;" enctype="multipart/form-data">
+    <div class="form-row">
+        <div class="form-group col-md-4 col-sm-6 col-12">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4 col-sm-6 col-12">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" class="form-control">
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4 col-sm-6 col-12">
+            <label asp-for="IssueYear"></label>
+            <input asp-for="IssueYear" class="form-control">
+            <span asp-validation-for="IssueYear" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4 col-sm-6 col-12">
+            <label asp-for="Producer"></label>
+            <input asp-for="Producer" class="form-control">
+            <span asp-validation-for="Producer" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
+            <label asp-for="Image"></label>
+            <input type="file" class="form-control-file" asp-for="Image">
+        </div>
+    </div>
+    <div class="form-group">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <button type="submit" class="btn btn-outline-primary">Создать</button>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Назад в список</a>
+</div>

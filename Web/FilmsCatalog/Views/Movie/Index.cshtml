@@ -1,0 +1,87 @@
+﻿@model PaginationModel<MovieDto>
+@using FilmsCatalog.Services.Contract.Models
+@using FilmsCatalog.Extensions
+@{ 
+    var currentUserId = User.GetUserId();
+}
+
+<div class="row">
+    <div class="col-12 col-xl-2 col-lg-2 col-md-3 col-sm-4">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a asp-controller="Movie" asp-action="Create" class="btn btn-success">Добавить фильм</a>
+        }
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Год выпуска</th>
+            <th>Режиссёр</th>
+            <th>Добавил</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.IssueYear</td>
+                <td>@item.Producer</td>
+                <td>@item.CreatedBy</td>
+                <td>
+                    <a asp-action="Details" class="btn btn-info" asp-route-id="@item.Id">Детали</a>
+                </td>
+                <td>
+                    @if (item.CreatedById == currentUserId)
+                    {
+                        <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.Id">Редактировать</a>
+                    }
+                </td>
+                <td>
+                    @if (item.CreatedById == currentUserId)
+                    {
+                        <a asp-action="Remove" class="btn btn-danger" asp-route-id="@item.Id">Удалить</a>
+                    }
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @(Model.PageModel.HasPreviousPage ? string.Empty : "disabled")">
+            <a class="page-link" asp-action="Index" asp-route-page="@(Model.PageModel.PageNumber-1)" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        @for (int i = 1; i <= Model.PageModel.TotalPages; i++)
+        {
+            if (i == Model.PageModel.PageNumber)
+            {
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">@i</span>
+                </li>
+            }
+            else
+            {
+                <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@i">@i</a></li>
+            }
+        }
+        <li class="page-item @(Model.PageModel.HasNextPage ? string.Empty : "disabled")">
+            <a class="page-link"  asp-action="Index" asp-route-page="@(Model.PageModel.PageNumber+1)" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

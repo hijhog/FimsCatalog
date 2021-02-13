@@ -1,0 +1,48 @@
+﻿@model FilmsCatalog.Services.Contract.Models.MovieDto
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Редактировать фильм</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IssueYear" class="control-label"></label>
+                <input asp-for="IssueYear" class="form-control" />
+                <span asp-validation-for="IssueYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Producer" class="control-label"></label>
+                <input asp-for="Producer" class="form-control" />
+                <span asp-validation-for="Producer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image"></label>
+                <input type="file" class="form-control-file" asp-for="Image">
+            </div>
+            <div class="form-group">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <button type="submit" class="btn btn-outline-primary">Редактировать</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад в список</a>
+</div>
